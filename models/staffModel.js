@@ -11,7 +11,7 @@ const StaffSchema = Schema({
     comment: String,
     createdAt: {
         type: Date,
-        default: new Date()
+        default: Date()
     }
 })
 

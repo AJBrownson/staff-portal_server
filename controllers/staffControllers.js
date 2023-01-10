@@ -32,20 +32,6 @@ const addStaff = asyncHandler(async (req, res) => {
     res.status(201).json(newStaff)
 })
 
-// const addStaff = asyncHandler(async (req, res) => {
-//     if (!req.body.text) {
-//         res.status(400)
-//         throw new Error('Please add a text field')
-//     }
-
-//     const newStaff = await Staff.create({
-//         name: req.body.text,
-//         comment: req.body.text,
-//     })
-
-//     res.status(201).json(newStaff)
-// })
-
 
 // @desc    Update staff
 // @route   PUT /api/staff/:id
