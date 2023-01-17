@@ -18,13 +18,13 @@ const getStaff = asyncHandler(async (req, res) => {
 // @access  Public
 
 const addStaff = asyncHandler(async (req, res) => {
-    if (!req.body.name && !req.body.comment) {
+    if (!req.body.data && !req.body.comment) {
         res.status(400)
         throw new Error('Please add a text field')
     }
 
     const newStaff = new Staff({
-        name: req.body.name,
+        data: req.body.data,
         comment: req.body.comment,
     })
 

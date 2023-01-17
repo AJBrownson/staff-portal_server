@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 
 const StaffSchema = Schema({
-    name: {
+    data: {
         type: String,
         required: [true, 'Please scan in name']
     },
