@@ -26,6 +26,8 @@ const addStaff = asyncHandler(async (req, res) => {
     const newStaff = new Staff({
         data: req.body.data,
         comment: req.body.comment,
+        time: req.body.time,
+        date: req.body.date
     })
 
     await newStaff.save()
@@ -65,7 +67,8 @@ const deleteStaff = asyncHandler(async (req, res) => {
         throw new Error('Staff record not found')
     }
 
-    await Staff.findByIdAndRemove()
+    // await Staff.findByIdAndRemove()
+    await Staff.remove()
 
     res.status(200).json({ id: req.params.id })
 })

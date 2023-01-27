@@ -7,12 +7,9 @@ const StaffSchema = Schema({
         type: String,
         required: [true, 'Please scan in name']
     },
-    
     comment: String,
-    createdAt: {
-        type: Date,
-        default: Date()
-    }
+    time: String,
+    date: String
 })
 
 module.exports = mongoose.model('Staff', StaffSchema);
