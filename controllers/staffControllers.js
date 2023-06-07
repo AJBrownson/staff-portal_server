@@ -67,10 +67,9 @@ const deleteStaff = asyncHandler(async (req, res) => {
         throw new Error('Staff record not found')
     }
 
-    // await Staff.findByIdAndRemove()
-    await Staff.remove()
+    await Staff.deleteOne()
 
-    res.status(200).json({ id: req.params.id })
+    res.status(200).json('Record deleted')
 })
 
 
