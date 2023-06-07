@@ -10,6 +10,6 @@ const StaffSchema = Schema({
     comment: String,
     time: String,
     date: String
-})
+});
 
-module.exports = mongoose.model('Staff', StaffSchema);
+module.exports = mongoose.model('Staff', StaffSchema, 'Staff');
