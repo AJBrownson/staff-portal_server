@@ -26,6 +26,7 @@ app.use(
 )
 
 app.use('/api/staff', require('./routes/staffRoutes'))
+app.use('/api/archive', require('./routes/archiveRoutes'))
 
 app.use(errorHandler)
 

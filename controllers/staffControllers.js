@@ -4,7 +4,7 @@ const Staff = require('../models/staffModel')
 
 // @desc    Get all staff records
 // @route   GET /api/staff
-// @access  Public
+// @access  Private
 
 const getStaff = asyncHandler(async (req, res) => {
     const staffMembers = await Staff.find()

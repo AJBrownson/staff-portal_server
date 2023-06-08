@@ -12,7 +12,7 @@ const archiveDBName = 'Archive';
 const archivedStaffCollectionName = 'ArchivedStaff';
 
 // Schedule the task to run at 9:00 AM daily
-cron.schedule('49 21 * * *', async () => {
+cron.schedule('1 22 * * *', async () => {
   try {
     // Connect to MongoDB Atlas
     const client = await mongoose.connect(process.env.CONNECTION_URI)
