@@ -4,11 +4,15 @@ const cors = require('cors')
 require('dotenv').config()
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
+const cronJob = require('./utils/cronJob')
 const port = process.env.PORT || 5000
 
 
 // Connects the applicaton to MongoDB
 connectDB()
+
+// Start the cron job
+cronJob()
 
 const app = express();
 
