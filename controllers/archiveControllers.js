@@ -7,10 +7,55 @@ const ArchivedStaff = require('../models/archiveModel')
 // @access  Private
 
 const getArchive = asyncHandler(async (req, res) => {
-    const archivedStaff = await ArchivedStaff.find()
+    const { search } = req.query;
+    let archive;
+    if (search) {
+        archive = await ArchivedStaff.aggregate(
+            [
+                {
+                  '$search': {
+                    'index': 'archive', 
+                    'compound': {
+                      'should': [
+                        {
+                          'autocomplete': {
+                            'query': search, 
+                            'path': 'data'
+                          }
+                        }, {
+                          'autocomplete': {
+                            'query': search, 
+                            'path': 'time'
+                          }
+                        }, {
+                          'autocomplete': {
+                            'query': search, 
+                            'path': 'date'
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }, {
+                  '$project': {
+                    'data': 1, 
+                    'comment': 1, 
+                    'time': 1, 
+                    'date': 1
+                  }
+                }
+              ]
+        )
+    } else {
+        archive = await ArchivedStaff.find().sort({ createdAt: 'desc' });
+    }
 
-    res.status(200).json(archivedStaff)
-})
+    return res.status(200).json({
+        statusCode: 200,
+        message: 'Retrieved records from archive',
+        data: { archive },
+    });
+});
 
 
 module.exports = {
